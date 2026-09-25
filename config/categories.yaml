@@ -1,0 +1,60 @@
+# The 8 categories (architecture doc §2.5). Each has:
+#   - description: used for the embedding-similarity fallback when no
+#     keyword rule fires (Day 3)
+#   - keywords: checked first; the category with the most keyword hits
+#     wins. Keep these lowercase — matching is done on lowercased text.
+#   - career_weight: used as the topic_match term in relevance scoring
+#     (§2.6) — higher for Samya's GenAI-engineer focus areas.
+
+categories:
+  genai_llms:
+    label: "GenAI / LLMs"
+    description: "Large language models, generative AI products, model releases, fine-tuning, prompting"
+    keywords: [llm, large language model, gpt, claude, gemini, generative ai, fine-tune, fine-tuning, prompt engineering, chatbot, foundation model]
+    career_weight: 1.0
+
+  agentic_ai:
+    label: "Agentic AI"
+    description: "Autonomous AI agents, multi-agent systems, tool use, agent frameworks and orchestration"
+    keywords: [agent, agentic, multi-agent, autonomous, tool use, orchestration, crewai, langgraph, autogen, mcp, model context protocol]
+    career_weight: 1.0
+
+  rag_ir:
+    label: "RAG / Information Retrieval"
+    description: "Retrieval augmented generation, vector databases, embeddings, semantic search, rerankers"
+    keywords: [rag, retrieval augmented generation, vector database, vector db, embedding, semantic search, reranker, chunking, pinecone, chroma, qdrant, milvus, weaviate]
+    career_weight: 1.0
+
+  ml_dl_research:
+    label: "ML / DL Research"
+    description: "Academic machine learning and deep learning research, papers, benchmarks, model architectures"
+    keywords: [paper, arxiv, benchmark, transformer architecture, neural network, deep learning research, training method, dataset release]
+    career_weight: 0.7
+
+  ai_infrastructure:
+    label: "AI Infrastructure"
+    description: "GPU/compute infrastructure, inference serving, model deployment, hardware for AI workloads"
+    keywords: [gpu, inference server, vllm, ollama, model serving, cuda, tpu, quantization, deployment infrastructure]
+    career_weight: 0.9
+
+  data_engineering:
+    label: "Data Engineering"
+    description: "Data pipelines, orchestration, warehousing, streaming, and the modern data stack"
+    keywords: [spark, kafka, airflow, dbt, databricks, snowflake, data pipeline, etl, elt, data warehouse, streaming, iceberg, delta lake, duckdb]
+    career_weight: 0.6
+
+  dev_tools_oss:
+    label: "Developer Tools / Open Source"
+    description: "Open source developer tools, frameworks, and libraries released or updated"
+    keywords: [open source, github release, sdk, framework release, library update, cli tool]
+    career_weight: 0.6
+
+  ai_industry:
+    label: "AI Industry / Companies"
+    description: "Company news, funding, partnerships, product launches, industry announcements"
+    keywords: [funding, acquisition, partnership, product launch, ipo, valuation, raises]
+    career_weight: 0.4
+
+# Catch-all if neither keyword rules nor the embedding fallback clear the
+# similarity bar in app/config.py (DEDUP_CLASSIFICATION_FALLBACK_THRESHOLD).
+default_category: ai_industry

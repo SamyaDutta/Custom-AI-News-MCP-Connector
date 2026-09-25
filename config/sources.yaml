@@ -1,0 +1,97 @@
+# Every RSS feed and official source the RSS collector (Day 2) polls.
+# priority: 1 (low) to 5 (high) — used as the source_quality term in
+# relevance scoring (architecture doc §2.6) and to resolve which source
+# becomes `events.primary_content_id` when items get merged (§2.4).
+
+rss_sources:
+  - name: "The Batch (DeepLearning.AI)"
+    url: "https://www.deeplearning.ai/the-batch/feed/"
+    category_hint: "GenAI / LLMs"
+    priority: 4
+
+  - name: "Hugging Face Blog"
+    url: "https://huggingface.co/blog/feed.xml"
+    category_hint: "Developer Tools / Open Source"
+    priority: 5
+
+  - name: "Google AI Blog"
+    url: "https://blog.google/technology/ai/rss/"
+    category_hint: "AI Industry / Companies"
+    priority: 5
+
+  - name: "AWS Machine Learning Blog"
+    url: "https://aws.amazon.com/blogs/machine-learning/feed/"
+    category_hint: "AI Infrastructure"
+    priority: 4
+
+  - name: "Towards Data Science"
+    url: "https://towardsdatascience.com/feed"
+    category_hint: "ML / DL Research"
+    priority: 3
+
+  - name: "InfoQ AI, ML & Data Engineering"
+    url: "https://www.infoq.com/ai-ml-data-eng/rss/"
+    category_hint: "AI Industry / Companies"
+    priority: 3
+
+# NOTE: verify each feed URL still resolves before the first real run —
+# blogs move/retire RSS endpoints without notice (architecture doc §2.13).
+# Add more from the Tier 2/3 list (VentureBeat, TechCrunch AI, Latent
+# Space, Import AI, Databricks, Snowflake, Confluent, Apache project
+# blogs, etc.) the same way — this file is the only thing that needs to
+# change, no code changes required.
+
+official_companies:
+  - name: Anthropic
+    category: "GenAI / LLMs"
+    priority: 5
+  - name: OpenAI
+    category: "GenAI / LLMs"
+    priority: 5
+  - name: Google DeepMind
+    category: "ML / DL Research"
+    priority: 5
+  - name: Meta AI
+    category: "GenAI / LLMs"
+    priority: 4
+  - name: Microsoft Research
+    category: "ML / DL Research"
+    priority: 4
+  - name: NVIDIA
+    category: "AI Infrastructure"
+    priority: 4
+  - name: Databricks
+    category: "Data Engineering"
+    priority: 3
+  - name: Snowflake
+    category: "Data Engineering"
+    priority: 3
+
+# Repos the GitHub collector (Day 2) watches directly via the Releases API.
+github_watchlist:
+  - langchain-ai/langchain
+  - langchain-ai/langgraph
+  - crewAIInc/crewAI
+  - vllm-project/vllm
+  - ollama/ollama
+  - huggingface/transformers
+  - milvus-io/milvus
+  - qdrant/qdrant
+  - chroma-core/chroma
+  - apache/spark
+  - apache/kafka
+  - apache/airflow
+  - dbt-labs/dbt-core
+  - duckdb/duckdb
+
+# Free-text queries the GitHub collector also runs against the Search API
+# (separate, stricter rate limit — see architecture doc §2.13).
+github_search_queries:
+  - "AI agent"
+  - "RAG pipeline"
+  - "MCP server"
+
+# Subreddits the Reddit collector (Day 2) polls, low frequency.
+reddit_subreddits:
+  - MachineLearning
+  - LocalLLaMA
