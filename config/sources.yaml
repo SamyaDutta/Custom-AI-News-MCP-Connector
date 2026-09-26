@@ -91,7 +91,4 @@ github_search_queries:
   - "RAG pipeline"
   - "MCP server"
 
-# Subreddits the Reddit collector (Day 2) polls, low frequency.
-reddit_subreddits:
-  - MachineLearning
-  - LocalLLaMA
+

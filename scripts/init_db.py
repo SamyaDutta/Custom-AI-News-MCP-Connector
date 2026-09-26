@@ -34,18 +34,18 @@ def seed_sources() -> None:
             )
             count += 1
 
-        # Non-RSS sources (arXiv, GitHub, Hugging Face, HN, Reddit, PWC,
-        # Semantic Scholar) are registered here too, even though their
-        # collectors land on Day 2 — this way `sources` reflects every
-        # feed/API in the design from Day 1, not just RSS.
+        # Non-RSS sources (arXiv, GitHub, Hugging Face, HN, Papers With
+        # Code) are registered here too, even though their collectors
+        # land on Day 2 — this way `sources` reflects every feed/API in
+        # the design from Day 1, not just RSS. Reddit and Semantic
+        # Scholar were dropped from the design — both required an
+        # account/API verification step neither of us wanted to chase.
         api_sources = [
             ("arXiv", 5),
             ("GitHub", 5),
             ("Hugging Face", 5),
             ("Hacker News", 3),
-            ("Reddit", 3),
             ("Papers With Code", 3),
-            ("Semantic Scholar", 4),
         ]
         for name, priority in api_sources:
             get_or_create_source(session, name=name, type_="api", priority=priority)

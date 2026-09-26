@@ -48,9 +48,10 @@ cp .env.example .env
 ```
 
 Day 1 doesn't strictly require any keys filled in yet (the DB check below
-runs with zero credentials), but it's worth creating your GitHub PAT and
-Reddit app now since Day 2 needs them immediately — see the comments in
-`.env.example` for where to get each one.
+runs with zero credentials), but it's worth creating your GitHub PAT now
+since Day 2 needs it immediately — see the comments in `.env.example`.
+Everything else (arXiv, Hugging Face, RSS, Hacker News, Papers With Code)
+needs no credentials at all.
 
 **5. Run the Day 1 verification script:**
 
@@ -62,14 +63,14 @@ Expected output:
 ```
 Using database: sqlite:////.../data/ai_tech_radar.db
 Tables created (or already existed).
-Seeded/confirmed 13 sources.
+Seeded/confirmed 11 sources.
 
 Day 1 check complete. ...
 ```
 
 **6. Confirm it actually worked** — open `data/ai_tech_radar.db` with the
 [SQLite Viewer VS Code extension](https://marketplace.visualstudio.com/items?itemName=qwtel.sqlite-viewer)
-(or any SQLite tool) and check the `sources` table has 13 rows across
+(or any SQLite tool) and check the `sources` table has 11 rows across
 `rss` and `api` types.
 
 If all of that matches, Day 1 is solid and Day 2 (the actual collectors)
@@ -114,4 +115,3 @@ git push -u origin main
 
 `.gitignore` already excludes `.env` and the local `data/*.db` file, so
 neither your secrets nor your local database get pushed.
-
